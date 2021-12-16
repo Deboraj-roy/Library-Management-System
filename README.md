@@ -24,6 +24,10 @@ If you like, you can build or develop the system yourself.
 
 ![](The%20final%20result%20(web%20page%20will%20be%20show)/UserProfile.JPG)
 
+                          Chang Password
+
+![](The%20final%20result%20(web%20page%20will%20be%20show)/ChangPassword.JPG)
+
                           Admin Login
 ![](The%20final%20result%20(web%20page%20will%20be%20show)/AdminLogin.JPG)
 
