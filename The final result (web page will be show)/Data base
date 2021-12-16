@@ -1,0 +1,206 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 12, 2021 at 11:40 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `lmsproject`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `Name` varchar(30) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `Gender` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`Name`, `Phone`, `Email`, `Password`, `Gender`) VALUES
+('Admin', '01708119559', 'admin@gmail.com', 'Admin', 'Male');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book`
+--
+
+CREATE TABLE `book` (
+  `id` int(11) NOT NULL,
+  `bookpic` varchar(25) NOT NULL,
+  `bookname` varchar(25) NOT NULL,
+  `bookdetail` varchar(110) NOT NULL,
+  `bookaudor` varchar(25) NOT NULL,
+  `bookpub` varchar(25) NOT NULL,
+  `branch` varchar(110) NOT NULL,
+  `bookprice` varchar(25) NOT NULL,
+  `bookquantity` varchar(25) NOT NULL,
+  `bookava` int(11) NOT NULL,
+  `bookrent` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`id`, `bookpic`, `bookname`, `bookdetail`, `bookaudor`, `bookpub`, `branch`, `bookprice`, `bookquantity`, `bookava`, `bookrent`) VALUES
+(5, 'logo.png', 'Ferris Mclaughlin', 'Qui ex dolor fugiat ', 'Est voluptates offi', 'Dolorem earum accusa', 'electrical', '264', '157', 157, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `issuebook`
+--
+
+CREATE TABLE `issuebook` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `issuename` varchar(25) NOT NULL,
+  `issuebook` varchar(25) NOT NULL,
+  `issuetype` varchar(25) NOT NULL,
+  `issuedays` int(11) NOT NULL,
+  `issuedate` varchar(25) NOT NULL,
+  `issuereturn` varchar(25) NOT NULL,
+  `fine` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `issuebook`
+--
+
+INSERT INTO `issuebook` (`id`, `userid`, `issuename`, `issuebook`, `issuetype`, `issuedays`, `issuedate`, `issuereturn`, `fine`) VALUES
+(3, 2, 'Randall Burch', 'Scott Gallagher', 'teacher', 4, '30/03/2021', '03/04/2021', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requestbook`
+--
+
+CREATE TABLE `requestbook` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `bookid` int(11) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `usertype` varchar(25) NOT NULL,
+  `bookname` varchar(25) NOT NULL,
+  `issuedays` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `requestbook`
+--
+
+INSERT INTO `requestbook` (`id`, `userid`, `bookid`, `username`, `usertype`, `bookname`, `issuedays`) VALUES
+(7, 6, 4, 'JAKIR', 'student', 'Scott Gallagher', '7');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `Name` varchar(30) NOT NULL,
+  `Birthday` date NOT NULL,
+  `Religion` varchar(30) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `Gender` varchar(10) NOT NULL,
+  `UserType` varchar(15) NOT NULL,
+  `Username` varchar(20) NOT NULL,
+  `Password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`Name`, `Birthday`, `Religion`, `Email`, `Phone`, `Gender`, `UserType`, `Username`, `Password`) VALUES
+('ADIPTTO', '1997-08-19', 'Hindus', 'adiptto@gmail.com', '01702222222', 'Male', 'Teacher', 'ADIPTTO', '1234'),
+('Jakir ahmed', '2016-02-14', 'Muslims', 'Jakir@gmail.com', '01777777777', 'male', 'Teacher', 'jakir', '1234'),
+('Joydeb roy', '1996-06-18', 'Hindus', 'Joydeb@gmail.com', '01708888889', 'male', 'Manager', 'Joydeb', 'Joydeb '),
+('Mehedi hassan', '2002-10-15', 'Muslims', 'Mehedi@supersave.net', '01705555555', 'male', 'Manager', 'Mehedi', '1234QWer'),
+('Pavel', '1997-11-13', 'Muslims', 'pavel@gmail.com', '01701111111', 'Male', 'Student', 'Pavel', '1234'),
+('All Rounder', '2018-05-15', 'Christians', 'Rounder@baybabes.com', '01708888888', 'male', 'Manager', 'Rounder', '!@#$qwER');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `book`
+--
+ALTER TABLE `book`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `issuebook`
+--
+ALTER TABLE `issuebook`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pk_fk` (`userid`);
+
+--
+-- Indexes for table `requestbook`
+--
+ALTER TABLE `requestbook`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pk_fk_book` (`bookid`),
+  ADD KEY `pk_fk_users` (`userid`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD UNIQUE KEY `Email` (`Email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `book`
+--
+ALTER TABLE `book`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `issuebook`
+--
+ALTER TABLE `issuebook`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `requestbook`
+--
+ALTER TABLE `requestbook`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
