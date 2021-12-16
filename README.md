@@ -5,4 +5,5 @@
 Import Or create lmsproject.sql on database
 
 
+If you like, you can build or develop the system yourself.
 
